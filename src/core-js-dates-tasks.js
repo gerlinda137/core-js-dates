@@ -103,14 +103,16 @@ function getCountDaysInMonth(month, year) {
   date.setFullYear(year);
   date.setMonth(month - 1);
   let i = 28;
-  for (; i < 31; i += 1) {
+  for (; i <= 31; i += 1) {
     date.setUTCDate(i);
     if (date.getMonth() !== month - 1) {
-      return i;
+      return i - 1;
     }
   }
-  return i;
+  return i - 1;
 }
+
+getCountDaysInMonth(1, 2024);
 
 /**
  * Returns the total number of days between two dates, including both the start and end dates.
