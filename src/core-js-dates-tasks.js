@@ -112,8 +112,6 @@ function getCountDaysInMonth(month, year) {
   return i;
 }
 
-getCountDaysInMonth(1, 2024);
-
 /**
  * Returns the total number of days between two dates, including both the start and end dates.
  *
