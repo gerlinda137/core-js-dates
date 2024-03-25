@@ -103,14 +103,16 @@ function getCountDaysInMonth(month, year) {
   date.setFullYear(year);
   date.setMonth(month - 1);
   let i = 28;
-  for (; i <= 31; i += 1) {
+  for (; i < 31; i += 1) {
     date.setUTCDate(i);
     if (date.getMonth() !== month - 1) {
-      return i - 1;
+      return i;
     }
   }
-  return i - 1;
+  return i;
 }
+
+getCountDaysInMonth(1, 2024);
 
 /**
  * Returns the total number of days between two dates, including both the start and end dates.
@@ -188,7 +190,7 @@ function getCountWeekendsInMonth(month, year) {
   date.setMonth(month - 1);
   date.setFullYear(year);
   let weekdays = 0;
-  const daysInAMonth = new Date(year, month - 1, 0).getDate();
+  const daysInAMonth = new Date(year, month, 0).getDate();
   for (let i = 1; i <= daysInAMonth; i += 1) {
     const element = new Date(year, month - 1, i).getDay();
     if (element === 0 || element === 6) weekdays += 1;
